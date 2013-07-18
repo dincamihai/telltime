@@ -1,6 +1,7 @@
 import flask
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from geobaza import GeobazaQuery
 
 root = flask.Blueprint("index", __name__)
 
@@ -10,8 +11,14 @@ def initialize_app(app):
 @root.route("/")
 def home():
     app = flask.current_app
+    ip = request.remote_addr
+    query = GeobazaQuery()
+    resp = query.get(ip)
+
     data = {
-        "hour": datetime.now().strftime("%H:%m")
+        "hour": datetime.now().strftime("%H:%m"),
+        "ip": ip,
+        "location": resp.name
     }
     return render_template('layout.html', **data)
 
