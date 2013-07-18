@@ -13,7 +13,9 @@ def create_app(instance_path=None):
     telltime.initialize_app(app)
     return app
 
-manager = flaskext.script.Manager(create_app)
+app = create_app()
+
+manager = flaskext.script.Manager(app)
 
 if __name__ == '__main__':
     manager.run()
