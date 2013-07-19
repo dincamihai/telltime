@@ -16,7 +16,7 @@ def home():
     resp = query.get(ip)
 
     data = {
-        "hour": datetime.now().strftime("%H:%m"),
+        "hour": datetime.now().strftime("%H:%M"),
         "ip": ip,
         "location": resp.name
     }
