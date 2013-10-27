@@ -2,5 +2,4 @@ Flask==0.8
 Flask-Script==0.3.3
 Jinja2==2.6
 gunicorn==0.15.0
-nose==1.2.1
 geobaza
